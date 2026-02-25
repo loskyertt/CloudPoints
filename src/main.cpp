@@ -142,6 +142,10 @@ void radiuKsearch(pcl::PointXYZ searchPoint, float radius,
 }
 
 int main(int argc, char **argv) {
+  // 设置控制台为 UTF-8
+  //SetConsoleOutputCP(CP_UTF8);
+  //SetConsoleCP(CP_UTF8);
+
   while (true) {
     auto beforeTime = std::chrono::steady_clock::now();
 
