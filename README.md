@@ -40,6 +40,34 @@
 - **地理信息**：处理地形、建筑物等地理点云数据
 - **科研教育**：作为点云处理算法研究和教学工具
 
+## 1.5 补充
+
+**注**：不要把 `conda` 添加到环境变量中！否则 cmake 的 `find_package` 命令会找 `conda` 的 FLANN，导致出现下面这种错误：
+
+```shell
+-- Configuring done (2.3s)
+
+CMake Error at C:/Packages/PCL_1.15.1/3rdParty/FLANN/lib/cmake/flann/flann-targets.cmake:61 (set_target_properties):
+ The link interface of target "flann::flann_cpp_s" contains:
+   lz4::lz4
+ but the target was not found.  Possible reasons include:
+   * There is a typo in the target name.
+   * A find_package call is missing for an IMPORTED target.
+   * An ALIAS target is missing.
+
+Call Stack (most recent call first):
+ C:/Packages/PCL_1.15.1/3rdParty/FLANN/lib/cmake/flann/flann-config.cmake:32 (include)
+ C:/Packages/PCL_1.15.1/cmake/Modules/FindFLANN.cmake:45 (find_package)
+ C:/Packages/PCL_1.15.1/cmake/PCLConfig.cmake:259 (find_package)
+ C:/Packages/PCL_1.15.1/cmake/PCLConfig.cmake:304 (find_flann)
+ C:/Packages/PCL_1.15.1/cmake/PCLConfig.cmake:576 (find_external_library)
+
+ example/CMakeLists.txt:13 (find_package)
+
+-- Generating done (0.1s)
+CMake Generate step failed.  Build files cannot be regenerated correctly. 
+```
+
 ---
 
 # 2. 项目结构
