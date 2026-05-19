@@ -1,21 +1,12 @@
-# for all "src/x.cpp", generate target "x"
-message("CMakeLists.txt for src directory")
+set(TARGET ${PROJECT_NAME}-${CMAKE_SYSTEM_NAME})
 
-set(ALL_SRCS
-  main.cpp
-)
+add_executable(${TARGET} main.cpp)
 
-add_executable(my_program ${ALL_SRCS})
-
-target_link_libraries(my_program
+target_link_libraries(${TARGET}
   PRIVATE
     ${PCL_LIBRARIES}
     Boost::thread
     Boost::system
 )
-
-if(MSVC)
-  target_compile_options(my_program PRIVATE /utf-8)  # UTF-8 支持
-endif()
 
 message("\n--------------------------------------------")
